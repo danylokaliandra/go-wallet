@@ -5,7 +5,10 @@ Se trata de explicar de forma general e informal una función de software escrit
 ## Tipos de usuario
 
 - Publicador, encargado de analizar los datos añadidos a la aplicación y de los intereses de los usuarios.
-- Visualizador, puede ver elementos de la aplicación sin poder interactuar con ellos.
+- Consumidor, puede seleccionar y visualizar los elementos disponibles en la aplicacion.
 - Editor de datos, capacidad de añadir y modificar datos y estilo de la aplicación.
 
 ---
+
+- Consumidor: quiero poder ver recetas de comida sin necesidad de introducir ingredientes.
+- Publicador: 
