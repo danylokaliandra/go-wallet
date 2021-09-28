@@ -7,3 +7,5 @@ Todo estudiante en su vida universitaria se va a encontrar con que un dia tras u
 ## Descripción
 
 Se trata de una aplicación que trate de ayudar al usuario a encontrar una receta de comida dada una lista de ingredientes.
+
+[Documentación del proyecto](docs/)
