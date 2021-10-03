@@ -15,7 +15,7 @@ Se trata de explicar de forma general e informal una función de software escrit
 
 ---
 
-* [HU1](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/2): Como consumidor, quiero poder evitar ver ingredientes que me puedan producir alguna alergia para que sea más sencillo seleccionar los ingredientes para buscar una receta.
+* [HU1](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/2): Como consumidor, quiero poder introducir un ingrediente para realizar una búsqueda de las recetas que se pueden realizar con ese ingrediente.
 * [HU2](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/3): Como consumidor, quiero poder agrupar recetas en categorías para simplificar la búsqueda de recetas.
 * [HU3](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/4): Como consumidor, quiero disponer de un informe de los ingredientes/recetas más vistas por los usuarios en la última semana para que me sirva de inspiración para seleccionar una receta.
   
