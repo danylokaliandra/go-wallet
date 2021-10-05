@@ -2,7 +2,7 @@
 
 ## Idea Inicial :bulb:
 
-La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando ingresos/gastos diarios/semanales/mensuales/anuales. La ayuda principal que recibirán los usuarios es la de reducir los gastos que realizan al dia para asi conseguir unos ahorros más consolidados.
+La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando ingresos/gastos diarios/semanales/mensuales/anuales para asi predecir el dinero que va a poder gastar en un periodo de tiempo conseguiendo al mismo tiempo ahorrar dinero. La ayuda principal que recibirán los usuarios es la de reducir los gastos que realizan al dia para asi conseguir unos ahorros más consolidados.
 
 ## Motivación :high_brightness:
 
