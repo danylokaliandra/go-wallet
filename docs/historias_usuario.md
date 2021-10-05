@@ -2,20 +2,10 @@
 
 Se trata de explicar de forma general e informal una función de software escrita desde la perspectiva del usuario final.
 
-## Tipos de usuario
-
-* Consumidor, puede seleccionar y visualizar los elementos disponibles en la aplicacion.
-* Gestor, capacidad de añadir y modificar datos teniendo en cuenta las decisiones estrategicas y ultimas noticias acerca de la alimentación y salud.
-
 ### Descipción de los usuarios
 
-* El consumidor puede ser una persona de 18 años, estudiante que pasa más tiempo en la calle que en su casa, que busca una aplicación que le haga ahorrar tiempo a la hora de preparar la comida.
-* El consumidor puede ser una persona de unos 30 años, que tiene tiempo para preparar la comida pero no tiene ni idea de preparar algo complejo, busca en la aplicación instrucciones bien definidas para preparar una cena para sus compañeros de trabajo.
-* El gestor es una persona que tiene que estar al tanto de que ingredientes que son dañinos para la salud e indicarlo en la aplicación.
+* **Estudiante**, estudia informática con 20 años, no tiene trabajo, solo estudia en la universidad de Granada. Su fuente de ingresos son sus padres que le dan una paga de 150€ al mes. Cada semana le gusta salir a tomarse una caña con sus amigos pero se encuentra a final de cada mes que esa paga no es suficiente para sus gastos y no sabe de donde pierde el dinero, quiere registrar todo lo que se gasta al dia para controlar sus gastos y llegar sin apuros a final de mes.
+* **Trabajador**, neurofisiólogo en el PTS de Granada, tiene un sueldo de 2000 a 3000 € al mes, tiene que pagar hipoteca y facturas todos los meses. No tiene problemas financieros su principal problema es que quiere cada mes algún capricho, no consigue ahorrar nada a final de mes quiere un lugar donde apuntar todos sus gastos e ingresos y conseguir un objetivo de ahorro para comprarse el nuevo iphone del 2021.
+* **Jubilado**, tiene 65 años, no trabaja ni estudia nada. Vive tranquilo en su casa, solo paga facturas mes a mes. Quiere gastarse dinero en viajar por el mundo ya que no ha tenido la oportunidad durante sus años de juventud ya que tuvo que trabajar mucho. Quiere hacer calculos de si va a poder gastarse ese dinero y seguir viviendo tranquilamente tras sus gastos.
 
 ---
-
-* [HU1](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/2): Como consumidor, quiero poder introducir un ingrediente para realizar una búsqueda de las recetas que se pueden realizar con ese ingrediente.
-* [HU2](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/3): Como consumidor, quiero poder agrupar recetas en categorías para simplificar la búsqueda de recetas.
-* [HU3](https://github.com/LuisArostegui/RealFoodRecipeCreator/issues/4): Como consumidor, quiero disponer de un informe de los ingredientes/recetas más vistas por los usuarios en la última semana para que me sirva de inspiración para seleccionar una receta.
-  
