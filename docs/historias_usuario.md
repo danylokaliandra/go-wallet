@@ -11,4 +11,6 @@ Se trata de explicar de forma general e informal una función de software escrit
 ---
 
 * [HU1](https://github.com/LuisArostegui/MyWallet/issues/2) Como trabajador, quiero saber cuanto dinero puedo ahorrar al año para realizar un análisis sobre mis gastos.
-* 
+* [HU2](https://github.com/LuisArostegui/MyWallet/issues/3) Como estudiante, me resultaría más cómodo poder tener una selección de planes de ahorros para poder elegir un método de ahorro que se adapte a mi estilo de vida.
+* [HU3](https://github.com/LuisArostegui/MyWallet/issues/4) Como trabajador, quiero poder ordenar mis gastos en categorías para darle una prioridad a la categoría donde gaste más dinero y controlar ese gasto.
+* [HU4](https://github.com/LuisArostegui/MyWallet/issues/7) Como trabajador, quiero poder crear varias cuentas para diferenciar cada una de su entidad bancaría y a que esta destinada.
