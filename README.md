@@ -2,11 +2,11 @@
 
 ## Idea Inicial :bulb:
 
-La idea es crear un sistema que almacene los gastos e ingresos de un usuario. La aplicación permitirá al usuario añadir el dinero que va ganando/gastando y se harán cálculos para predecir el dinero que se va a ganar/perder al dia/semana/mes/año previniendo pequeños sustos que se pueda encontrar a lo largo del tiempo.
+La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando ingresos/gastos diarios/semanales/mensuales/anuales. La ayuda principal que recibirán los usuarios es la de reducir los gastos que realizan al dia para asi conseguir unos ahorros más consolidados.
 
 ## Motivación :high_brightness:
 
-La idea del proyecto viene de querer ayudar a aquellas personas que necesiten registrar sus gastos/ingresos para lograr una salud financiera para evitar tener problemas con el dinero.
+La idea del proyecto viene de querer ayudar a aquellas personas que necesiten registrar sus gastos/ingresos para lograr una salud financiera para evitar tener problemas con el dinero. El principal problema que se trata de solucionar es el de ahorrar diaria, semanal, mensual o anualmente según comoq quiera el usuario. La idea es que se ajuste al objetivo de ahorros del usuario.
 
 ## Documentación :bookmark_tabs:
 
