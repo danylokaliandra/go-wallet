@@ -9,3 +9,6 @@ Se trata de explicar de forma general e informal una función de software escrit
 * **Jubilado**, tiene 65 años, no trabaja ni estudia nada. Vive tranquilo en su casa, solo paga facturas mes a mes. Quiere gastarse dinero en viajar por el mundo ya que no ha tenido la oportunidad durante sus años de juventud ya que tuvo que trabajar mucho. Quiere hacer calculos de si va a poder gastarse ese dinero y seguir viviendo tranquilamente tras sus gastos.
 
 ---
+
+* [HU1](https://github.com/LuisArostegui/MyWallet/issues/2) Como trabajador, quiero saber cuanto dinero puedo ahorrar al año para realizar un análisis sobre mis gastos.
+* 
