@@ -1,9 +1,13 @@
-# RealFoodRecipeCreator
+# MyWallet :moneybag:
 
-## Idea Inicial
+## Idea Inicial :bulb:
 
-Todo estudiante en su vida universitaria se va a encontrar con que un dia tras una fiesta se le ha olvidado ir a comprar y necesita hacer la comida, la idea es que con una lista de ingredientes pequeña se le muestren recetas de comida que se ajusten a los ingredientes que tiene.
+La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando gastos/ingresos diarios/semanales/mensuales/anuales para asi predecir el dinero que va a poder gastar en un periodo de tiempo conseguiendo al mismo tiempo ahorrar dinero. La ayuda principal que recibirán los usuarios es la de reducir los gastos que realizan al dia para asi conseguir unos ahorros más consolidados.
 
-## Descripción
+## Motivación :high_brightness:
 
-Se trata de una aplicación que trate de ayudar al usuario a encontrar una receta de comida dada una lista de ingredientes.
+La idea del proyecto viene de querer ayudar a aquellas personas que necesiten registrar sus gastos/ingresos para lograr una salud financiera para evitar tener problemas con el dinero. El principal problema que se trata de solucionar es el de ahorrar diaria, semanal, mensual o anualmente según como quiera el usuario. La idea es que se ajuste al objetivo de ahorros del usuario.
+
+## Documentación :bookmark_tabs:
+
+Para acceder a toda la documentación puede acceder desde [aquí](docs/)
