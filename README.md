@@ -11,3 +11,17 @@ La idea del proyecto viene de querer predecir el dinero que generarán los usuar
 ## Documentación :bookmark_tabs:
 
 Para acceder a toda la documentación puede acceder desde [aquí](docs/)
+
+## Task runner para el proyecto
+
+Como este proyecto se esta implementando el Go, se ha buscado un task runner para este. El elegido es [Task](https://taskfile.dev/#/). Para ver más información sobre el gestor de tareas y dependecias pinche [aquí](/docs/gestor.md).
+
+1. Necesitamos tener instalado tener instalado en nuestro sistema **Go**. Si no esta instalado se puede hacer desde [aquí](https://golang.org/doc/install).
+
+2. Se tiene que instalar el gestor de tareas, hay varias maneras de [instalarlo](https://taskfile.dev/#/installation) aqui se va a comentar una manera de todas las posibles. Si tenemos instalado y bien configurado Go podemos ejecutar:
+
+```shell
+ go install github.com/go-task/task/v3/cmd/task@latest
+``` 
+
+
