@@ -18,10 +18,31 @@ Como este proyecto se esta implementando el Go, se ha buscado un task runner par
 
 1. Necesitamos tener instalado tener instalado en nuestro sistema **Go**. Si no esta instalado se puede hacer desde [aquí](https://golang.org/doc/install).
 
-2. Se tiene que instalar el gestor de tareas, hay varias maneras de [instalarlo](https://taskfile.dev/#/installation) aqui se va a comentar una manera de todas las posibles. Si tenemos instalado y bien configurado Go podemos ejecutar:
+2. Se tiene que instalar el gestor de tareas, hay varias maneras de [instalarlo](https://taskfile.dev/#/installation) aqui se va a comentar una manera de todas las posibles. La que me ha resultado más sencilla, obteniendo el binario de la herramienta, es la siguiente:
 
-```shell
- go install github.com/go-task/task/v3/cmd/task@latest
-``` 
+	```shell
+
+	sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+
+	```
+
+
+3. Clonamos el repositorio y accedemos a el:
+
+	``` shell
+	
+	git clone git@github.com:LuisArostegui/MyWallet.git
+	cd MyWallet
+	
+	```
+
+4. Uso de Task
+Una vez en el repositorio podemos ejecutar las siguientes acciones:
+	* **task install**, se generará un ejecutable del proyecto en $GOPATH/bin
+	* **task run**, ejecuta el proyecto.
+	* **task check**, se comprobará la sintaxis de las entidades programadas.
+	* **task installdeps**, se incluirán las dependecias del proyecto en el fichero go.mod.
+	* **task test**, se ejecutarán todos los tests del proyecto.
+	 
 
 
