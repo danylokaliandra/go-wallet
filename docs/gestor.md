@@ -2,7 +2,10 @@
 
 ## Gestor de tareas
 
-Como task runner se ha seleccionado [Task](https://taskfile.dev/#/).
+Tras buscar los gestores de tareas que hay disponibles, para nuestro lenguaje de programación podemos seleccionar GNU make o Task.
+
+- Task al ser una herramienta escrita en Golang con una sintaxis basada en YAML.
+- GNU make, es una de las herramientas de automatización de tareas más popular pero puede llegar a ser algo molesto en algunas ocasiones, por ejemplo para pasar argumentos a funciones que queramos testear. Además Task al estar escrito en un fichero Taskfile.yml resulta más sencillo ver las órdenes que podemos ejecutar en el proyecto, es decir, tiene una estructura mucho más ordenada que GNU make. Por eso vamos a comentar [Task](https://taskfile.dev/#/) como nuestro task runner para el proyecto.
 
 ### ¿Qué es?
 
