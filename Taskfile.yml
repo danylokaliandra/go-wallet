@@ -1,17 +1,6 @@
 version: '3'
 
 tasks:
-  install:
-    cmds:
-      - go install cmd/main.go
-      - cmd: echo 'Con install se mueve el ejecutable al $GOPATH/bin'
-    silent: true
-
-  run:
-    cmds:
-      - go run cmd/main.go
-    silent: true
-
   check:
     cmds:
       - go build cmd/...

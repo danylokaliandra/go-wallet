@@ -18,7 +18,7 @@ Como este proyecto se esta implementando el Go, se ha buscado un task runner par
 
 1. Necesitamos tener instalado tener instalado en nuestro sistema **Go**. Si no esta instalado se puede hacer desde [aquí](https://golang.org/doc/install).
 
-2. Se tiene que instalar el gestor de tareas, hay varias maneras de [instalarlo](https://taskfile.dev/#/installation) aqui se va a comentar una manera de todas las posibles. La que me ha resultado más sencilla, obteniendo el binario de la herramienta, es la siguiente:
+2. Para instalar Task podemos hacerlo desde un script, esto resulta util en escenarios como CI. La siguiente orden instalará el gestor de tareas en el directorio /usr/local/bin:
 
 	```shell
 
