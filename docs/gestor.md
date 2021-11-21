@@ -1,19 +1,23 @@
-# Gestores de tareas y dependecias
+# Gestor de tareas y dependecias
 
 ## Gestor de tareas
 
-Tras buscar los gestores de tareas que hay disponibles, para nuestro lenguaje de programación podemos seleccionar GNU make o Task.
+Se usará Task como task runner del proyecto.
 
-- Task al ser una herramienta escrita en Golang con una sintaxis basada en YAML.
-- GNU make, es una de las herramientas de automatización de tareas más popular pero puede llegar a ser algo molesto en algunas ocasiones, por ejemplo para pasar argumentos a funciones que queramos testear. Además Task al estar escrito en un fichero Taskfile.yml resulta más sencillo ver las órdenes que podemos ejecutar en el proyecto, es decir, tiene una estructura mucho más ordenada que GNU make. Por eso vamos a comentar [Task](https://taskfile.dev/#/) como nuestro task runner para el proyecto.
+### Motivación
 
-### ¿Qué es?
+Go es un lenguaje que usa un task runner implícito, con subcomandos de go se puede compilar (go build), ejecutar tests (go test) o instalar un paquete (go install) pero tiene sus limites y puede ser necesario añadir herramientas externas para cubrir estas limitaciones. 
 
-Es una herramienta de ejecución / contrucción de tareas que pretende ser más simple y fácil de usar que, por ejemplo, GNU Make.
+Algunas de esas limitaciones las podemos encontrar a la hora de ejecutar varios tests, si solo tenemos un test bastaría con ejecutar "go test *ruta-del-test*", pero si tenemos varios test puede ser molesto especificar rutas concretas del proyecto para que se ejecute todo correctamente. 
 
-Es una buena elección para el proyecto ya que Task está escrito en Go. No tiene otras dependencias, lo que significa que no necesita configuraciones de instalación complejas.
+Herramientas que nos ayuden a cubrir estas necesidades pueden ser Task o make. Ambas herramientas necesitan de un fichero donde se especifiquen las acciones que queremos realizar en nuestro proyecto, este fichero se puede ir ampliando conforme vayan aparenciendo nuevas necesidades en nuestra aplicación.
 
-### Características
+Cualquiera de los dos gestores de tareas para la asignatura son suficientes, el hecho de seleccionar Task en lugar de make es:
+
+- La documentación y uso de la herramienta. Por ejemplo, el poder indicar y enviar variables a nuestro proyecto, útil para indicar en un futuro varios tiempos de datos a nuestra aplicación como en esta se van a escribir números donde pueden salir numeros más grandes, más pequeños, con más o menos decimales es importante que sea sencillo poder probar varios tipos de números y escribirlo continuamente en una terminal va a ser molesto por esto podemos crear indicando un fichero de texto por separado indicando las variables y desde el Taskfile.yml usar estas variables para pasarlas como parámetros a distintas funciones de nuestro proyecto.
+- Podemos incluir otros taskfiles, esto puede ser útil para un futuro para cuando despleguemos la aplicación usando docker.
+
+### Características de Task
 
 * Instalación sencilla, se tiene que agregar un binario y agregarlo al $PATH.
 
