@@ -2,6 +2,20 @@
 
 ## Gestor de tareas
 
+En Golang nos podemos encontrar los siguientes task runner:
+
+* Realize:
+	* Podemos manejar varios proyecto simultaneamente.
+	* Acepta todos los comandos de Go.
+	* Más info: github.com/oxequa/realize
+* Godo:
+	* Es un task runner y analizador de ficheros de Golang basado en Rake, gulp.
+	* Más info: https://github.com/go-godo/godo
+* Myke:
+	* Similar a make pero con yaml.
+	* myke resuelve todos estos problemas en un único binario diminuto, para evitar reinventar las mismas cosas una y otra vez.
+	* Más info: https://github.com/omio-labs/myke
+	
 Se usará Task como task runner del proyecto.
 
 ### Motivación
