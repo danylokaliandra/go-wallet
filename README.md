@@ -11,3 +11,38 @@ La idea del proyecto viene de querer predecir el dinero que generarán los usuar
 ## Documentación :bookmark_tabs:
 
 Para acceder a toda la documentación puede acceder desde [aquí](docs/)
+
+## Task runner para el proyecto
+
+Como este proyecto se esta implementando el Go, se ha buscado un task runner para este. El elegido es [Task](https://taskfile.dev/#/). Para ver más información sobre el gestor de tareas y dependecias pinche [aquí](/docs/gestor.md).
+
+1. Necesitamos tener instalado tener instalado en nuestro sistema **Go**. Si no esta instalado se puede hacer desde [aquí](https://golang.org/doc/install).
+
+2. Para instalar Task podemos hacerlo desde un script, esto resulta util en escenarios como CI. La siguiente orden instalará el gestor de tareas en el directorio /usr/local/bin:
+
+	```shell
+
+	sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b /usr/local/bin
+
+	```
+
+
+3. Clonamos el repositorio y accedemos a el:
+
+	``` shell
+	
+	git clone git@github.com:LuisArostegui/MyWallet.git
+	cd MyWallet
+	
+	```
+
+4. Uso de Task
+Una vez en el repositorio podemos ejecutar las siguientes acciones:
+	* **task install**, se generará un ejecutable del proyecto en $GOPATH/bin
+	* **task run**, ejecuta el proyecto.
+	* **task check**, se comprobará la sintaxis de las entidades programadas.
+	* **task installdeps**, se incluirán las dependecias del proyecto en el fichero go.mod.
+	* **task test**, se ejecutarán todos los tests del proyecto.
+	 
+
+
