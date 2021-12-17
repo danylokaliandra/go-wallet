@@ -6,9 +6,6 @@ type Usuario struct {
 	cuentas []Account
 }
 
-// Poner parametro por defecto a contructor para cuentas
-//Añadir a cuentas un dinero total
-//Añadir map a cuentas
 func NewUsuario(name string, fnac string) *Usuario {
 	user := new(Usuario)
 	user.nombre = name

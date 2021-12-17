@@ -2,22 +2,21 @@ package mywallet
 
 type Account struct {
 	nombre string
-	saldo  float64
+	total  float64
 }
 
-func NewAccount(nombre string, saldo float64) *Account {
+func NewAccount(nombre string) *Account {
 	acc := new(Account)
 	acc.nombre = nombre
-	acc.saldo = saldo
 	return acc
 }
 
-func (a *Account) GetSaldo() float64 {
-	return a.saldo
+func (a *Account) GetTotal() float64 {
+	return a.total
 }
 
-func (a *Account) SetSaldo(saldo float64) {
-	a.saldo = saldo
+func (a *Account) SetTotal(total float64) {
+	a.total = total
 }
 
 func (a *Account) GetNombre() string {
