@@ -28,3 +28,11 @@ func (a *Account) GetNombre() string {
 func (a *Account) SetNombre(nombre string) {
 	a.nombre = nombre
 }
+
+func (a *Account) AniadirBalance(nombre string, valor float64) {
+	a.balance[nombre] = valor
+}
+
+func (a *Account) GetBalance() map[string]float64 {
+	return a.balance
+}
