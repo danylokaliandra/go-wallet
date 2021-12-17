@@ -1,13 +1,15 @@
 package mywallet
 
 type Account struct {
-	nombre string
-	total  float64
+	nombre  string
+	total   float64
+	balance map[string]float64
 }
 
 func NewAccount(nombre string) *Account {
 	acc := new(Account)
 	acc.nombre = nombre
+	acc.balance = make(map[string]float64)
 	return acc
 }
 
