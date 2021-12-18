@@ -3,7 +3,7 @@ version: '3'
 tasks:
   check:
     cmds:
-      - go build cmd/...
+      - go build internal/...
       - cmd: echo 'Realizadas comprobaciones de sintaxis de las entidades'
     silent: true
 
@@ -15,4 +15,4 @@ tasks:
 
   test:
     cmds:
-      - go test -v ./cmd/...
+      - go test -v ./internal/...

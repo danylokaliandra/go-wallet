@@ -6,11 +6,20 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestSomething(t *testing.T) {
+func TestObjetivoAhorroMensual(t *testing.T) {
 
-	var a string = "Hello"
-	var b string = "Hello"
+	assert := assert.New((t))
+	t.Log("Test calcular objetivo ahorro mensual")
 
-	assert.Equal(t, a, b, "The two words should be the same.")
+	cuenta := NewAccount("Viaje", 2000.50, 40000)
+	cuenta.AniadirBalance(2000)
+	cuenta.AniadirBalance(-50)
+	cuenta.AniadirBalance(-19.99)
+	cuenta.AniadirBalance(-5)
+	var anios int = 5
 
+	objetivoMensual := cuenta.ObjetivoAhorroMensual(anios)
+	wantedvalue := 633.325
+
+	assert.Equal(objetivoMensual, wantedvalue, "Valor obtenido erroneo")
 }
