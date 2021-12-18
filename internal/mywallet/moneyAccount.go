@@ -54,3 +54,16 @@ func (a *Account) ObjetivoAhorroMensual(anios int) float64 {
 
 	return ahorro_mensual
 }
+
+func (a *Account) PredecirAhorrosAnuales() float64 {
+	var ahorro_anual float64 = 0
+	var balance_mensual float64 = 0
+
+	for _, valor := range a.balance {
+		balance_mensual += valor
+	}
+
+	ahorro_anual = (balance_mensual * 12) + a.total
+
+	return ahorro_anual
+}
