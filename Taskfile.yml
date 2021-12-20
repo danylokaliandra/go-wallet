@@ -3,7 +3,7 @@ version: '3'
 tasks:
   check:
     cmds:
-      - go build internal/...
+      - go build ./internal/...
       - cmd: echo 'Realizadas comprobaciones de sintaxis de las entidades'
     silent: true
 
