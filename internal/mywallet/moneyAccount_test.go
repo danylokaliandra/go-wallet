@@ -69,7 +69,6 @@ func TestAsignarCuentas(t *testing.T) {
 	cuenta_2.AniadirBalance(-19.99)
 	cuenta_2.AniadirBalance(-5)
 
-	//Asignar cuentas. MIrar valores y logitud de array. Hacer commit de lo anterior
 	usuario.AniadirCuenta(*cuenta)
 	usuario.AniadirCuenta(*cuenta_2)
 	wantedlen := 2

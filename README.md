@@ -2,7 +2,7 @@
 
 ## Idea Inicial :bulb:
 
-La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando gastos/ingresos diarios/semanales/mensuales/anuales para asi predecir el dinero que va a poder gastar en un periodo de tiempo conseguiendo al mismo tiempo ahorrar dinero. Se calcularán los gastos de los usuarios para asi reducir los gastos de su dia a dia para obtener unos ahorros más consolidados.
+La idea es crear un sistema que permita a los usuarios tener el control sobre sus gastos. La aplicación mostrará un informe actualizado dia a dia sobre los gastos/ingresos del usuario, esto lo podrá hacer automatizando gastos/ingresos mensuales para asi predecir el dinero que va a poder gastar en un periodo de tiempo conseguiendo al mismo tiempo ahorrar dinero. Se calcularán los gastos de los usuarios para asi reducir los gastos de su dia a dia para obtener unos ahorros más consolidados.
 
 ## Motivación :high_brightness:
 
@@ -46,3 +46,6 @@ Una vez en el repositorio podemos ejecutar las siguientes acciones:
 	 
 
 
+## Test unitarios
+
+Se puede consultar toda la información acerca de los test unitarios desarrollados [aquí](docs/tests.md)
