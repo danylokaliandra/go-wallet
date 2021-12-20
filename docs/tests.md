@@ -23,3 +23,13 @@ En el proyecto se usará [Testify](https://github.com/stretchr/testify). Aunque 
 ## Uso de la herramienta seleccionada
 
 Se ha creado un fichero llamado 'moneyAccount_test.go' en el que se declaran los test correspondientes a la entidad Usuario y moneyAccount.
+
+## F.I.R.S.T
+
+Los tests desarrollados siguen el principio F.I.R.S.T:
+
+* Fast, los test deben de ser rápidos, en mi caso los test tardan un tiempo promedio de 0.0001s después de haber ejecutado 10 veces los tests.
+* Isolated, cada test ejecuta una parte independiente de la entidad.
+* Repeteable, siempre se obtiene el mismo resultado intependientemente de la máquina donde se ejecute.
+* Self-validating, los test, gracias a Testify, se comprueban automáticamente si se pasan. No hace falta validarlo manualmente.
+* Thorough, los test cubren todos los escenarios posibles.
