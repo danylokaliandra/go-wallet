@@ -16,9 +16,7 @@ func TestObjetivoAhorroMensual(t *testing.T) {
 	assert.Greater(objetivo, total, "Error. Total es mayor que el objetivo")
 	cuenta := NewAccount("Viaje", total, objetivo)
 	cuenta.AniadirBalance(2000)
-	cuenta.AniadirBalance(-50)
-	cuenta.AniadirBalance(-19.99)
-	cuenta.AniadirBalance(-5)
+	cuenta.AniadirBalance(-450.66)
 	var anios int = 5
 
 	objetivoMensual := cuenta.ObjetivoAhorroMensual(anios)
@@ -36,12 +34,9 @@ func TestPredecirAhorrosAnuales(t *testing.T) {
 	cuenta.AniadirBalance(3000)
 	cuenta.AniadirBalance(-50)
 	cuenta.AniadirBalance(-400)
-	cuenta.AniadirBalance(-600)
-	cuenta.AniadirBalance(-19.99)
-	cuenta.AniadirBalance(-5)
 
 	ahorroAnual := cuenta.PredecirAhorrosAnuales()
-	wantedvalue := 33100.119999999995
+	wantedvalue := 40600.0
 
 	assert.Equal(ahorroAnual, wantedvalue, "Valor obtenido erroneo")
 }
@@ -54,20 +49,12 @@ func TestAsignarCuentas(t *testing.T) {
 
 	cuenta := NewAccount("Banco", 10000.00, 30000.65)
 	cuenta.AniadirBalance(3000)
-	cuenta.AniadirBalance(-50)
-	cuenta.AniadirBalance(-400)
-	cuenta.AniadirBalance(-600)
-	cuenta.AniadirBalance(-19.99)
-	cuenta.AniadirBalance(-5)
 
 	total := 2000.50
 	objetivo := 40000.5
 	assert.Greater(objetivo, total, "Error. Total es mayor que el objetivo")
 	cuenta_2 := NewAccount("Viaje", total, objetivo)
 	cuenta_2.AniadirBalance(2000)
-	cuenta_2.AniadirBalance(-50)
-	cuenta_2.AniadirBalance(-19.99)
-	cuenta_2.AniadirBalance(-5)
 
 	usuario.AniadirCuenta(*cuenta)
 	usuario.AniadirCuenta(*cuenta_2)
