@@ -4,6 +4,16 @@ Para realizar el objetivo 4 de la asignatura se pide documentar posibles opcione
 
 ## Frameworks de tests para Golang
 
+### ¿Que se busca en framework para tests?
+
+En este caso para un lenguaje de programación como Go, se busca un framework que:
+
+* Se pueda ejecutar con `go test` con el fin de aprovechar el core que Go nos proporciona, como son los paquetes de testing como su binario para la ejecución.
+* Sencillez, es decir, que se puedan añadir aserciones facilmente y de manera intutiva.
+* Mocking, el proyecto puede llegar a tener un gran número de clases, si por cada test que creamos tenemos que instanciar las clases va a ser un trabajo donde vamos a perder mucho tiempo. Por ello si el framework posee esta habilidad generaremos tests de una manera más eficiente.
+* Debe de ser ligero, para que los tests sean suficientemente rápidos como para cumplir los principios de F.I.R.S.T.
+* Disponer de un test suite para facilitar el setup y teardown.
+
 Go es un lenguaje sin excepciones. El fin de las expeciones es que cuando se produce una excepción, el programa no debería de continuar sino pararse. En go tenemos una función, *panic*, que se usa cuando queramos que el programa se pare. Aun asi no deberíamos de usar *panic* muy a menudo. Otra opción que tenemos es hacer un control de errores. Como en go se pueden devolver más de un valor en una función, se puede devolver el valor esperado y un error. Esto podemos personalizarlo según como nos sea más comodo y haya un mayor control. Por ejemplo, podemos crear nuestra propia estructura con un mensaje y código de error, creamos funciones para que crear el error y mostrar el error obtenido. Esto conlleva declarar condicionales cada vez que queramos controlar algo de nuestro código, en mi opinión algo laborioso.
 
 Para ejecutar test en go se puede hacer uso de una biblioteca de testing, nos encontramos con distintas opciones:
