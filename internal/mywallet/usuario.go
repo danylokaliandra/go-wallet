@@ -1,23 +1,27 @@
 package mywallet
 
+import (
+	"time"
+)
+
 type Usuario struct {
 	nombre  string
-	fnac    string
+	fnac    time.Time
 	cuentas []Account
 }
 
-func NewUsuario(name string, fnac string) *Usuario {
+func NewUsuario(name string, fnac time.Time) *Usuario {
 	user := new(Usuario)
 	user.nombre = name
 	user.fnac = fnac
 	return user
 }
 
-func (u *Usuario) GetFnac() string {
+func (u *Usuario) GetFnac() time.Time {
 	return u.fnac
 }
 
-func (u *Usuario) SetFnac(fnac string) {
+func (u *Usuario) SetFnac(fnac time.Time) {
 	u.fnac = fnac
 }
 

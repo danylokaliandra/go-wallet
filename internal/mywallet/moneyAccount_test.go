@@ -2,6 +2,7 @@ package mywallet
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 )
@@ -45,7 +46,8 @@ func TestAsignarCuentas(t *testing.T) {
 	assert := assert.New((t))
 	t.Log("Test crear y asignar cuentas a un usuario")
 
-	usuario := NewUsuario("Luis", "26/04/1999")
+	tTime := time.Date(1999, time.April, 26, 0, 0, 0, 0, time.Local)
+	usuario := NewUsuario("Luis", tTime)
 
 	cuenta := NewAccount("Banco", 10000.00, 30000.65)
 	cuenta.AniadirBalance(3000)
