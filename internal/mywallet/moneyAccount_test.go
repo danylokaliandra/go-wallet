@@ -64,3 +64,30 @@ func TestAsignarCuentas(t *testing.T) {
 
 	assert.Equal(len(usuario.GetCuentas()), wantedlen, "No se han añadido correctamente las cuentas")
 }
+
+func TestPredecirAhorrosEdad(t *testing.T) {
+	assert := assert.New((t))
+	t.Log("Test predecir ahorros a una determinada edad")
+
+	tTime := time.Date(1999, time.April, 26, 0, 0, 0, 0, time.Local)
+	usuario := NewUsuario("Luis", tTime)
+
+	cuenta := NewAccount("Banco", 600.0, 30000.65)
+	cuenta.AniadirBalance(200)
+
+	total := 500.0
+	objetivo := 40000.5
+	cuenta_2 := NewAccount("Viaje", total, objetivo)
+	cuenta_2.AniadirBalance(300)
+
+	usuario.AniadirCuenta(*cuenta)
+	usuario.AniadirCuenta(*cuenta_2)
+	wantedlen := 2
+	assert.Equal(len(usuario.GetCuentas()), wantedlen, "No se han añadido correctamente las cuentas")
+
+	edad_ahorrando := 55
+	ahorroEdad := usuario.PredecirAhorrosEdad(edad_ahorrando)
+	wantedValue := 234300.0
+
+	assert.Equal(ahorroEdad, wantedValue, "Valor erroneo obtenido")
+}
