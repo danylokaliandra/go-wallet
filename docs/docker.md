@@ -68,3 +68,9 @@ Se ha automatizado la ejecución de los tests en el task runner. Esto se consigu
 6. La directiva COPY permite copiar los ficheros de dependecias a la carpeta /app/test.
 7. WORKDIR, especificamos la ruta donde queremos trabajar.
 8. ENTRYPOINT, indicamos la acción a ejecutar, en este caso `task test`.
+
+## Uso de Docker Hub
+
+Para realizar la configuración de mi repositorio con Docker Hub he consultado [esta página](https://docs.docker.com/docker-hub/builds/).
+
+Se tiene que crear un Github Action que crea la imagen del contenedor y la publica en Docker Hub de forma automática. Con esto conseguiremos que cada vez que avancemos de objetivo (se haga un push a la rama principal), se automatice la construcción de la imagen. También me ha sido de utilidad la siguiente [documentación](https://docs.docker.com/ci-cd/github-actions/).
