@@ -16,3 +16,7 @@ tasks:
   test:
     cmds:
       - go test -v ./internal/...
+
+  docker:
+    cmds:
+      - docker run -t -v `pwd`:/app/test luisarostegui/mywallet

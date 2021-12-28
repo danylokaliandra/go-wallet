@@ -44,8 +44,10 @@ Una vez en el repositorio podemos ejecutar las siguientes acciones:
 	* **task installdeps**, se incluirán las dependecias del proyecto en el fichero go.mod.
 	* **task test**, se ejecutarán todos los tests del proyecto.
 	 
-
-
 ## Test unitarios
 
 Se puede consultar toda la información acerca de los test unitarios desarrollados [aquí](docs/tests.md)
+
+## Docker
+
+Toda la información sobre el uso de docker y todo lo relativo a ello se puede encontrar [aquí](docs/docker.md)
