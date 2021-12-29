@@ -18,7 +18,6 @@ WORKDIR $TEST_DIR
 
 #Instalamos modulos necesarios para compilar
 COPY go.mod ./
-COPY go.sum ./
 
 #Ahora podemos descargar y actualizar las dependecias
 RUN go mod download

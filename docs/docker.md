@@ -74,3 +74,43 @@ Se ha automatizado la ejecución de los tests en el task runner. Esto se consigu
 Para realizar la configuración de mi repositorio con Docker Hub he consultado [esta página](https://docs.docker.com/docker-hub/builds/).
 
 Se tiene que crear un Github Action que crea la imagen del contenedor y la publica en Docker Hub de forma automática. Con esto conseguiremos que cada vez que avancemos de objetivo (se haga un push a la rama principal), se automatice la construcción de la imagen. También me ha sido de utilidad la siguiente [documentación](https://docs.docker.com/ci-cd/github-actions/).
+
+# Cambios de framework de testing
+
+Tras completar el fichero de CI workflow, en nuestro caso [este](.github/workflows/dockerhub.yml), me han surgido problemas para poder ejecutar el Dockerfile. Aparentemente, el Dockerfile tenía buena pinta no había error sintáticos. Pero al ejecutar ```docker run -t -v `pwd`:/app/test luisarostegui/mywallet``` surgió el siguiente error:
+
+```console
+ Objetivo-5 U:5 ?:1  ~/UGR/IV/Mi-repo/MyWallet                                                                                                                      12:54:09  luismsi 
+❯ task docker
+task: [docker] docker run -t -v `pwd`:/app/test luisarostegui/mywallet
+task: [test] go test -v ./...
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+go: updates to go.mod needed; to update it:
+        go mod tidy
+task: Failed to run task "test": exit status 1
+task: Failed to run task "docker": exit status 1
+```
+
+Lo primero que se me vino a la mente fue que hay un error al instalar nuestro task runner y no consegue ejecutar correctamente la sentencia `Task test` correctamente. Ya que el error nos indica que hay paquetes que no están actualizados caí en que el error tenía que estar referido a los paquetes que importo en mi proyecto pero esto no debería de ser un gran problema, `go mod tidy` actualiza nuestras dependecias y `go mod download` las descarga... ¿Entonces porque no consigue descargar las dependecias? El único import que tenía que podía suponer problemas era el de **Testify**, probé a quitar este paquete y a ejecutar los tests sin framework de test y correcto, ahi estaba el error, la versión 1.17 de Go no puede incluir esta dependencia. Como el error parecía de la imagen base seleccionada, opté por seleccionar otra imagen, como por ejemplo una imagen que no fuese Alpine (obtenia el mismo error) u otra versión de Go. La opción de otra versión de Go parecía atractiva ya que pude observar en la documentación de Testify que su proyecto funciona de manera estable en versiones de Go desde la 1.13 hasta la 1.15, es decir, realmente no soporta la versión 1.17 que se estaba usando hasta el momento. Cambiando a una versión 1.15, al ejecutar nuestro docker run obtenía el siguiente error:
+
+```console
+  Objetivo-5 U:5 ?:1  ~/UGR/IV/Mi-repo/MyWallet                                                                                                                                13:14:07  luismsi 
+❯ task docker
+task: [docker] docker run -t -v `pwd`:/app/test luisarostegui/mywallet
+task: [test] go test -v ./...
+go: downloading github.com/davecgh/go-spew v1.1.1
+go: downloading gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
+# runtime/cgo
+cgo: C compiler "gcc" not found: exec: "gcc": executable file not found in $PATH
+FAIL    github.com/LuisArostegui/MyWallet/internal/mywallet [build failed]
+FAIL
+task: Failed to run task "test": exit status 2
+task: Failed to run task "docker": exit status 1
+```
+
+Otro error a nuestro catalogo. Al buscar el error parece que tenía que incluir en el Dockerfile una operación como `RUN apk add g++` ya que el error parece que viene de un paquete de Testify que necesita funciones escritas en C. Pero aun incluyendo tenía el mismo error una y otra vez.
+
+Al seguir indagando sobre el error, quizas este estaba en como se montaba el fichero para el workflow de dockerhub, encontré una sección en la documentación oficial para crear este fichero especificamente para este lenguaje, Go, pero al cambiar este fichero no suponía ningún cambio en el error.
+
+Por esto he decidido abandonar Testify y volver a la documentación del anterior objetivo en busca de un framework de test que se ajuste al proyecto. Probé con go-testdeep pero me pareció demasiasdo complejo para los tests que tengo actualmente en mi proyecto. Y viendo **gopwt** me pareció muy buena elección. Una vez "traducidos" los test de testify a gopwt probé a ejecutarlos localmente, funcionaban y la verdadera prueba era ejecutando docker run... Y funciona a la perfección, ejecutando los tests y descargando y añadiendo las dependecias sin ningún problema. Por esto nuestro framework de tests ahora es **gopwt**.

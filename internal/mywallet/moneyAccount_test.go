@@ -4,17 +4,13 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stretchr/testify/assert"
+	"github.com/ToQoz/gopwt/assert"
 )
 
 func TestObjetivoAhorroMensual(t *testing.T) {
 
-	assert := assert.New((t))
-	t.Log("Test calcular objetivo ahorro mensual")
-
 	total := 2000.50
 	objetivo := 40000.5
-	assert.Greater(objetivo, total, "Error. Total es mayor que el objetivo")
 	cuenta := NewAccount("Viaje", total, objetivo)
 	cuenta.AniadirBalance(2000)
 	cuenta.AniadirBalance(-450.66)
@@ -23,13 +19,10 @@ func TestObjetivoAhorroMensual(t *testing.T) {
 	objetivoMensual := cuenta.ObjetivoAhorroMensual(anios)
 	wantedvalue := 633.3333333333334
 
-	assert.Equal(objetivoMensual, wantedvalue, "Valor obtenido erroneo")
+	assert.OK(t, objetivoMensual == wantedvalue, "El valor obtenido es incorrecto")
 }
 
 func TestPredecirAhorrosAnuales(t *testing.T) {
-
-	assert := assert.New((t))
-	t.Log("Test predecir ahorros anuales")
 
 	cuenta := NewAccount("Banco", 10000.00, 30000.65)
 	cuenta.AniadirBalance(3000)
@@ -39,12 +32,10 @@ func TestPredecirAhorrosAnuales(t *testing.T) {
 	ahorroAnual := cuenta.PredecirAhorrosAnuales()
 	wantedvalue := 40600.0
 
-	assert.Equal(ahorroAnual, wantedvalue, "Valor obtenido erroneo")
+	assert.OK(t, ahorroAnual == wantedvalue, "Valor obtenido erroneo")
 }
 
 func TestAsignarCuentas(t *testing.T) {
-	assert := assert.New((t))
-	t.Log("Test crear y asignar cuentas a un usuario")
 
 	tTime := time.Date(1999, time.April, 26, 0, 0, 0, 0, time.Local)
 	usuario := NewUsuario("Luis", tTime)
@@ -54,7 +45,6 @@ func TestAsignarCuentas(t *testing.T) {
 
 	total := 2000.50
 	objetivo := 40000.5
-	assert.Greater(objetivo, total, "Error. Total es mayor que el objetivo")
 	cuenta_2 := NewAccount("Viaje", total, objetivo)
 	cuenta_2.AniadirBalance(2000)
 
@@ -62,12 +52,10 @@ func TestAsignarCuentas(t *testing.T) {
 	usuario.AniadirCuenta(*cuenta_2)
 	wantedlen := 2
 
-	assert.Equal(len(usuario.GetCuentas()), wantedlen, "No se han añadido correctamente las cuentas")
+	assert.OK(t, len(usuario.GetCuentas()) == wantedlen, "No se han añadido correctamente las cuentas")
 }
 
 func TestPredecirAhorrosEdad(t *testing.T) {
-	assert := assert.New((t))
-	t.Log("Test predecir ahorros a una determinada edad")
 
 	tTime := time.Date(1999, time.April, 26, 0, 0, 0, 0, time.Local)
 	usuario := NewUsuario("Luis", tTime)
@@ -83,11 +71,11 @@ func TestPredecirAhorrosEdad(t *testing.T) {
 	usuario.AniadirCuenta(*cuenta)
 	usuario.AniadirCuenta(*cuenta_2)
 	wantedlen := 2
-	assert.Equal(len(usuario.GetCuentas()), wantedlen, "No se han añadido correctamente las cuentas")
+	assert.OK(t, len(usuario.GetCuentas()) == wantedlen, "No se han añadido correctamente las cuentas")
 
 	edad_ahorrando := 55
 	ahorroEdad := usuario.PredecirAhorrosEdad(edad_ahorrando)
 	wantedValue := 234300.0
 
-	assert.Equal(ahorroEdad, wantedValue, "Valor erroneo obtenido")
+	assert.OK(t, ahorroEdad == wantedValue, "Valor erroneo obtenido")
 }
