@@ -1,5 +1,3 @@
-# This is a basic workflow that is manually triggered
-
 name: Publish Docker Image in Docker Hub
 
 # Indicamos activación cuando el código se envía a la rama principal del repo 
@@ -7,29 +5,31 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**.go'
+      - go.mod
   pull_request:
     branches:
       - main
+env:
+  REPO: mywallet
 # Especificamos lo que queramos que suceda dentro de nuestro flujo de trabajo.
 jobs:
   build:
     runs-on: ubuntu-latest # Indicamos que se ejecute en las últimas instancias de Ubuntu disponibles.
     
     steps:
-      -
-        name: Checkout # Revisa nuestro repo en $GITHUB_WORKSPACE para que nuestro workflow pueda acceder a el.
+      - name: Checkout # Revisa nuestro repo en $GITHUB_WORKSPACE para que nuestro workflow pueda acceder a el.
         uses: actions/checkout@v2
-      -
-        name: Login to Docker Hub
+      - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-      -
-        name: Build and push
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/mywallet:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/$REPO:latest

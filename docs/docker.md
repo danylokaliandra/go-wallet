@@ -36,6 +36,13 @@ Vistas estas alternativas vamos a ver como integrar Docker en nuestro proyecto.
 
 ## Integración de Docker en nuestro proyecto
 
+### Cuestiones a tener en cuenta en la elección de una imagen
+
+Nos vamos a encontrar, en general, con dos tipos de imagen distintas, una basada en debian y otra en Alpine. Las diferencias entre estas dos son las siguientes:
+
+* El tamaño entre una y otra. Alpine tiene un tamaño menor que Debian. Con esto conseguimos que operaciones como construir, pull y push sean más rápidas.
+* Consumir menos memoria por el propio sistema operativo en comparación con Debian. Alpine se considera seguro y rápido.
+
 ### Imagen de Golang
 
 Docker tiene muchas imagenes de golang, cada una de ellas diseñada para un caso de uso específico:
@@ -44,7 +51,7 @@ Docker tiene muchas imagenes de golang, cada una de ellas diseñada para un caso
 * `golang:<version>-alpine`, esta imagen se basa en el proyecto Alpine Linux. Las imagenes Alpine Linux son mucho más livianas que la mayoría de imágenes base de distribución (~5 MB). Esta variante es experimental y no es oficialmente compatible con el [proyecto Go](https://github.com/golang/go/issues/19938). La principal advertencia a tener en cuenta es que utiliza **musl libc** en lugar de **glibc**, puede llegar a provocar un comportamiento inesperador en nuestra aplicación. En [este artículo](https://news.ycombinator.com/item?id=10782897) se conversa acerca de los problemas que puede traer este tipos de imagenes.
 * `golang:<version>-windowsservercore`, esta imagen se basa en Windows Server Core.
 
-En nuestro caso tenemos que debatir se seleccionar la imagen basada en Debian o en Alpine. Como hemos comentado la principal diferencia entre estas es el tamaño y Alpine viene con la desventaja de que la imagen es una variante experimental pero esto para nuestro proyecto en un principio no acarrea ningún problema y se va a optar por la imagen Alpine por su menor tamaño respecto a Debian. En concreo la versión de la imagan va a ser la 1.17, hay una versión 1.18 a dia de hoy, 28/12/2021, pero es una versión beta.
+En nuestro caso tenemos que debatir se seleccionar la imagen basada en Debian o en Alpine. Como hemos comentado la principal diferencia entre estas es el tamaño y Alpine viene con la desventaja de que la imagen es una variante experimental pero esto para nuestro proyecto en un principio no acarrea ningún problema y se va a optar por la imagen Alpine por su menor tamaño respecto a Debian. En concreo la versión de la imagen va a ser la 1.17, hay una versión 1.18 a dia de hoy, 28/12/2021, pero es una versión beta, la version 1.17 es la última más estable actualmente.
 
 ### Facilitar uso de Docker con nuestro task runner
 
@@ -74,6 +81,54 @@ Se ha automatizado la ejecución de los tests en el task runner. Esto se consigu
 Para realizar la configuración de mi repositorio con Docker Hub he consultado [esta página](https://docs.docker.com/docker-hub/builds/).
 
 Se tiene que crear un Github Action que crea la imagen del contenedor y la publica en Docker Hub de forma automática. Con esto conseguiremos que cada vez que avancemos de objetivo (se haga un push a la rama principal), se automatice la construcción de la imagen. También me ha sido de utilidad la siguiente [documentación](https://docs.docker.com/ci-cd/github-actions/).
+
+### Construcción de nuestro fichero para el workflow
+
+1. Indicamos cuando se debe de publicar la imagen en docker hub.
+
+```yaml
+on:
+  push:
+    branches: # Indicamos la rama de nuestro repositorio que queremos analizar.
+      - main
+    paths: # Indicamos los ficheros que tiene que analizar para realizar la publicación de la imagen.
+      - '**.go' #  Si estos ficheros no se han modificado no se realiza la publicación
+      - go.mod
+  pull_request:
+    branches:
+      - main
+```
+* Bajo mi punto de vista, si se realiza un push a la rama principal y hemos modificado algún fichero .go o el go.mod deberíamos de actualizar la imagen ya que habremos añadido código que afectará a la lógica de negocio de nuestro proyecto. Otra opción puede ser añadir `path-ignore` e incluir los ficheros, por ejemplo, de documentación, con esto conseguiriamos que si se edita un fichero de documentación y se hace push a la rama principal no se actualice la imagen en docker hub.
+* Cuando hacemos merge desde un pull request a la rama principal, en la asignatura significa que siempre se van a realizar cambios respecto a la lógica de negocio de nuestro proyecto, es decir, vamos a estar realizando cambios importantes en nuestro proyecto por esto pienso que para este repositorio concreto si hacemos merge de un pull request a la rama main se ejecute la publicación de la imagen.
+
+2. Creo una variable para especificar el repositorio del que queremos crear y publicar una imagen.
+```yaml
+env:
+  REPO: mywallet
+```
+3. Especificamos que queremos que suceda dentro de nuestro flujo de trabajo.
+```yaml
+jobs:
+  build:
+    runs-on: ubuntu-latest # Indicamos que se ejecute en las últimas instancias de Ubuntu disponibles.
+    
+    steps:
+      - name: Checkout # Revisa nuestro repo en $GITHUB_WORKSPACE para que nuestro workflow pueda acceder a el.
+        uses: actions/checkout@v2
+      - name: Login to Docker Hub # Iniciamos sesión en docker hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - name: Build and push # Contruimos la imagen y la publicamos
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/$REPO:latest
+```
+
 
 # Cambios de framework de testing
 

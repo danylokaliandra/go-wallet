@@ -92,7 +92,7 @@ func TestPredecirAhorrosEdad(t *testing.T) {
 
 	edad_ahorrando := 55
 	ahorroEdad := usuario.PredecirAhorrosEdad(edad_ahorrando)
-	wantedValue := 234300.0
+	wantedValue := 227200.0
 
 	g.Describe("Objetivo Ahorro Mensual", func() {
 		// Passing Test
