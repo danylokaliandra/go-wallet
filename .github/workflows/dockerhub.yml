@@ -11,8 +11,7 @@ on:
   pull_request:
     branches:
       - main
-env:
-  REPO: mywallet
+
 # Especificamos lo que queramos que suceda dentro de nuestro flujo de trabajo.
 jobs:
   build:
@@ -32,4 +31,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/$REPO:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/mywallet:latest
