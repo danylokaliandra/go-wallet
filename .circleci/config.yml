@@ -11,6 +11,7 @@ jobs:
         command: "task test"
 
 workflows:
+  version: 2
   test-app-workflow:
     jobs:
       - test-app
