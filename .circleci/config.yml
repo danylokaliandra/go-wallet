@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "Test app IV"
-        command: "task test"
+          name: "Test app IV"
+          command: "task test"
 
 workflows:
   version: 2
