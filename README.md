@@ -46,8 +46,12 @@ Una vez en el repositorio podemos ejecutar las siguientes acciones:
 	 
 ## Test unitarios
 
-Se puede consultar toda la información acerca de los test unitarios desarrollados [aquí](docs/tests.md)
+Se puede consultar toda la información acerca de los test unitarios desarrollados [aquí](docs/tests.md).
 
 ## Docker
 
-Toda la información sobre el uso de docker y todo lo relativo a ello se puede encontrar [aquí](docs/docker.md)
+Toda la información sobre el uso de docker y todo lo relativo a ello se puede encontrar [aquí](docs/docker.md).
+
+## Integración Continua
+
+Toda la información sobre el uso de CI en el proyecto y todo lo relativo a ello se puede encontrar [aquí](docs/CI.md).
