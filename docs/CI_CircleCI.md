@@ -3,6 +3,7 @@
 Para usar **Circle CI** como sistema de integración continua, se han consultado varias webs para poder entender las buenas prácticas con Circle CI.
 
 * [Aquí](https://programmerclick.com/article/78021241003/) se tiene la documentación que nos ayuda a enteder la sintáxis usada para configurar el sistema.
+* Para habilitar los checks API se ha seguido la [siguiente documentación](https://circleci.com/docs/2.0/enable-checks/).
 
 ## Utilidad
 Circle CI, como sistema de integración continua, permite conectarte de forma muy sencilla con el repositorio de Github y actualizarlo por cada push. No presenta errores a la hora de descargar nuestra imagen de docker hub por tanto tiene completa compatibilidad con docker hub. Destacar que la documentación oficial nos comenta como trabajar con la versión 2. Existe una versión 2.1 pero he usado la version 2. Con la versión 2.1 existen nuevas directivas (las cuales nos podemos informar de ellas en el enlace del principio del documento) como 'when' y podemos evitar poner una versión en nuestro workflow, pero he optado por una opción más conservadora y basarme en la documentación oficial.
@@ -48,3 +49,9 @@ Una vez guardamos toda la configuración estos son los resultados obtenidos:
 Podemos observar como se ejecutan los tests:
 
 ![Tests passed](imgs/Circle_testpass.png)
+
+## Checks API
+
+Se muestra una imagen de que se han habilitado los checks para github siguiendo los pasos de [esta página](https://circleci.com/docs/2.0/enable-checks/).
+
+![Tests passed](imgs/checkApi.jpeg)
