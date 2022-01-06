@@ -6,11 +6,14 @@ on:
     branches:
       - main
     paths:
-      - '**.go'
+      - Dockerfile
       - go.mod
   pull_request:
     branches:
       - main
+    paths:
+      - Dockerfile
+      - go.mod
 
 # Especificamos lo que queramos que suceda dentro de nuestro flujo de trabajo.
 jobs:

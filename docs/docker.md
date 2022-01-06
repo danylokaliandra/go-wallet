@@ -51,7 +51,7 @@ Docker tiene muchas imagenes de golang, cada una de ellas diseñada para un caso
 * `golang:<version>-alpine`, esta imagen se basa en el proyecto Alpine Linux. Las imagenes Alpine Linux son mucho más livianas que la mayoría de imágenes base de distribución (~5 MB). Esta variante es experimental y no es oficialmente compatible con el [proyecto Go](https://github.com/golang/go/issues/19938). La principal advertencia a tener en cuenta es que utiliza **musl libc** en lugar de **glibc**, puede llegar a provocar un comportamiento inesperador en nuestra aplicación. En [este artículo](https://news.ycombinator.com/item?id=10782897) se conversa acerca de los problemas que puede traer este tipos de imagenes.
 * `golang:<version>-windowsservercore`, esta imagen se basa en Windows Server Core.
 
-En nuestro caso tenemos que debatir se seleccionar la imagen basada en Debian o en Alpine. Como hemos comentado la principal diferencia entre estas es el tamaño y Alpine viene con la desventaja de que la imagen es una variante experimental pero esto para nuestro proyecto en un principio no acarrea ningún problema y se va a optar por la imagen Alpine por su menor tamaño respecto a Debian. En concreo la versión de la imagen va a ser la 1.17, hay una versión 1.18 a dia de hoy, 28/12/2021, pero es una versión beta, la version 1.17 es la última más estable actualmente.
+En nuestro caso tenemos que debatir si seleccionar la imagen basada en Debian o en Alpine. Como hemos comentado la principal diferencia entre estas es el tamaño y Alpine viene con la desventaja de que la imagen es una variante experimental pero esto para nuestro proyecto en un principio no acarrea ningún problema y se va a optar por la imagen Alpine por su menor tamaño respecto a Debian. En concreto la versión de la imagen va a ser la 1.17, hay una versión 1.18 a dia de hoy, 28/12/2021, pero es una versión beta, la version 1.17 es la última más estable actualmente.
 
 ### Facilitar uso de Docker con nuestro task runner
 
@@ -83,23 +83,27 @@ Para realizar la configuración de mi repositorio con Docker Hub he consultado [
 Se tiene que crear un Github Action que crea la imagen del contenedor y la publica en Docker Hub de forma automática. Con esto conseguiremos que cada vez que avancemos de objetivo (se haga un push a la rama principal), se automatice la construcción de la imagen. También me ha sido de utilidad la siguiente [documentación](https://docs.docker.com/ci-cd/github-actions/).
 
 ### Construcción de nuestro fichero para el workflow
-
 1. Indicamos cuando se debe de publicar la imagen en docker hub.
-
 ```yaml
 on:
   push:
-    branches: # Indicamos la rama de nuestro repositorio que queremos analizar.
+    branches:
       - main
     paths: # Indicamos los ficheros que tiene que analizar para realizar la publicación de la imagen.
-      - '**.go' #  Si estos ficheros no se han modificado no se realiza la publicación
+      - Dockerfile #  Si estos ficheros no se han modificado no se realiza la publicación
       - go.mod
   pull_request:
     branches:
       - main
+    paths:
+      - Dockerfile
+      - go.mod
 ```
-* Bajo mi punto de vista, si se realiza un push a la rama principal y hemos modificado algún fichero .go o el go.mod deberíamos de actualizar la imagen ya que habremos añadido código que afectará a la lógica de negocio de nuestro proyecto. Otra opción puede ser añadir `path-ignore` e incluir los ficheros, por ejemplo, de documentación, con esto conseguiriamos que si se edita un fichero de documentación y se hace push a la rama principal no se actualice la imagen en docker hub.
-* Cuando hacemos merge desde un pull request a la rama principal, en la asignatura significa que siempre se van a realizar cambios respecto a la lógica de negocio de nuestro proyecto, es decir, vamos a estar realizando cambios importantes en nuestro proyecto por esto pienso que para este repositorio concreto si hacemos merge de un pull request a la rama main se ejecute la publicación de la imagen.
+
+La imagen depende de las dependencias y del Dockerfile, por tanto:
+
+* Se indica que cuando se haga un push bien a la rama main o bien se modifiquen las dependencias del proyecto, go.mod, o se modifique el Dockerfile se generará una imagen de nuestro proyecto.
+* Cuando se realice un pull request hacia la rama main o bien se modique el Dockerfile o go.mod, se generará una nueva imagen.
 
 2. Creo una variable para especificar el repositorio del que queremos crear y publicar una imagen.
 ```yaml
