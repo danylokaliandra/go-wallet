@@ -1,39 +1,5 @@
 # Contenedor de pruebas
 
-# Motivación
-
-Los contenedores son una forma optimizada de crear, probar y poner en marcha aplicaciones en varios entornos. Algunos de sus beneficios son:
-
-* Menos sobrecarga, requieren menos recursos del sistema que los enternos de máquinas virtuales o hardware.
-* Mayor portabilidad, las aplicaciones se pueden poner en marcha fácilmente en sistemas operativos y platadormas de hardware diferentes.
-* Mayor eficiencia, permiten escalar las aplicaciones con mayor rapidez.
-* Mejor desarrollo de aplicaciones, los contenedores respaldan los esfuerzos ágiles y de DevOps para acelerar los ciclos de desarrollo, prueba y producción.
-
-En nuestro proyecto vamos a usar [Docker](https://www.docker.com/). Aparte de Docker existen otras herramientas que pueden realizar la misma función de esta, estonces, ¿porqué usar Docker?
-
-Algunas de las cosas que buscamos en un contenedor son:
-
-* Las instancias deben de ser ligeras, con un contenedor se tiene que conseguir un montaje sencillo de nuestra aplicación haciendo que este se arranque rápidamente.
-* Deben de ser consistentes, cuando se desarrolla en un contenedor se hacen pruebas de la aplicación dentro de este y se despliegan dentro de un contenedor. Esto significa que el entorno de pruebas es idéntico al entorno en el que se va a ejecutar el software.
-* Eficiencia de imágenes del contenedor, poder crear una imagen de contenedor y usar esa misma imagen a lo largo de todo el proceso de despliegue.
-
-Docker cumple con estos requisitos además de que:
-
-* Es gratuito y de código abierto
-* Ofrece compatibilidad y mantenimiento más facil.
-* Las configuraciones son rápidas y simples
-* Garantiza entornos consistentes desde la fase de desarrollo hasta la fase de producción, es decir, ofrecen pruebas continuas.
-
-## Alternativas a Docker
-
-Docker no es perfecto, se puede mencionar que una de sus desventajas es que debe de ejecutarse con privilegios root y al parar el contenedor se elimina toda la información dentro de él a excepción de lo que está en los volúmenes. Otra desventaja es que no divide los recursos sino que consume los recursos del host a demanda, esto puede generar que otros contenedores vayan lento por culpa de otro que consuma demasiados recursos. Por tanto otras opciones a Docker son:
-
-* RKT, uno de los mayores competidores de Docker. Su fuerte es la seguridad. Antes de la versión 1.1 Docker necesitaba correrse como usuario root, una vulnerabilidad grave que permite ataques a nivel de super usuario. RKT permite utilizar el manejo estandar de grupos para permisos Linux, esto permite ejecutar el contenedor una vez creado con un usuario sin privilegios root. Docker tiene la ventaja de que es más fácil de integrar mientras que RKT conlleva una instalación y configuración más manual.
-* Podman, nos permite ejecutar contenedores con usuarios sin privilegios root. Soporta múltiples formatos de imágenes como OCI y Docker. Soporta el manejo de Pods.
-* LXC, usa una tecnología de virtualización a nivel de sistema operativo que permite crear y correr múltiples entornos virtuales linux de manera aislada.
-
-Vistas estas alternativas vamos a ver como integrar Docker en nuestro proyecto.
-
 ## Integración de Docker en nuestro proyecto
 
 ### Cuestiones a tener en cuenta en la elección de una imagen
@@ -87,8 +53,6 @@ Se tiene que crear un Github Action que crea la imagen del contenedor y la publi
 ```yaml
 on:
   push:
-    branches:
-      - main
     paths: # Indicamos los ficheros que tiene que analizar para realizar la publicación de la imagen.
       - Dockerfile #  Si estos ficheros no se han modificado no se realiza la publicación
       - go.mod
@@ -102,8 +66,9 @@ on:
 
 La imagen depende de las dependencias y del Dockerfile, por tanto:
 
-* Se indica que cuando se haga un push bien a la rama main o bien se modifiquen las dependencias del proyecto, go.mod, o se modifique el Dockerfile se generará una imagen de nuestro proyecto.
+* Se indica que cuando se haga un push y se modifiquen las dependencias del proyecto, go.mod, o se modifique el Dockerfile se generará una imagen de nuestro proyecto.
 * Cuando se realice un pull request hacia la rama main o bien se modique el Dockerfile o go.mod, se generará una nueva imagen.
+* Antes se tenía que cuando se hiciese un push a la rama main se actualizase la imagen, pero en este proyecto se avanza mergeando PR de una rama al main por tanto nunca se va a hacer un push a la rama main directamente.
 
 2. Creo una variable para especificar el repositorio del que queremos crear y publicar una imagen.
 ```yaml

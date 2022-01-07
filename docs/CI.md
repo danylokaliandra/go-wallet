@@ -4,7 +4,7 @@ Se trata de implementar acciones que se ejecuten cuando sucede un evento en nues
 
 ## Elección de servicio online de CI
 
-Para completar el objetivo se debe de implementar al menos dos servicios de integración continua. Primero vemos requisitos a tener en cuanta para seleccionar un servicio.
+Para completar el objetivo se debe de implementar al menos dos servicios de integración continua. Primero vemos requisitos a tener en cuenta para seleccionar un servicio.
 
 ### Que buscamos en un servicio de CI
 
@@ -28,4 +28,11 @@ Para completar el objetivo se debe de implementar al menos dos servicios de inte
 
 Se elegirá Circle CI y Github Actions como sistemas de CI para el proyecto.
 
+### Motivos
+
+En el caso de **Circle CI**, este sistema es compatible con imagenes Docker, por lo que podemos aprovechar que tenemos una imagen de nuestro proyecto en Docker Hub y usarla para ejecutar los tests. Si no quisieramos usar nuestra imagen podemos optar por usar Matrix jobs, que era uno de los requisitos que buscabamos de un sistema de integración continua, en nuestro caso no lo vamos a usar pero aun así [aquí](https://circleci.com/blog/circleci-matrix-jobs/) se encuentra la documentación sobre como montar. En este caso Circle CI tiene completa compatiblidad con Github útil para los Checks API y por último tiene una configuración muy sencilla, iniciando sesión en la plataforma con los datos de github, gracias al OAuth que ofrece, directamente detecta nuestro repositorios e indicar cual es el que queremos configurar. Al ser ficheros de configuración .yml es muy similar la sintaxis que vamos a usar respecto a la que hemos usado hasta ahora, por ejemplo la usada para configurar workflows de Github. Al final queda un fichero muy compacto, con pocas directivas y que funciona a la perfección. Otra característica es que ofrece plantillas para diversos lenguajes, en nuestro caso no va a servir para mucho pero es algo que cabe mencionar para tener en cuenta en alguna otra ocasión si se usa un lenguaje distinto al usado en este proyecto.
+
+En el caso de **Github Actions**, me optado por este sistema por su plena compatibilidad con Github, como es obvio. Ofrece Matrix jobs, los cuales vamos a configurar y nos puede resultar útil que podamos instalar nuestro task runner para poder usar las ordenes que tengamos configuradas en nuestro repositorio. Por último, la configuración es muy similar a la que utilizamos para publicar una imagen de nuestro proyecto en Docker Hub por tanto estaba totalmente familiarizado con a sintaxis usada y entendiendo todas las directivas desde el primer momento que se monta el fichero, solo se tiene que buscar como usar matrix jobs.
+
+Otra posible elección podía ser **Travis CI**, ofrece todo lo mencionado que buscamos en sistemas CI pero al intentar probar el producto tenía que insertar la tarjeta de crédito, algo que me echó bastante para atras para probar el sistema.
 
