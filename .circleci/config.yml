@@ -1,0 +1,17 @@
+version: 2
+
+jobs:
+  test-app:
+    docker:
+      - image: luisarostegui/mywallet:latest
+    steps:
+      - checkout
+      - run:
+          name: "Test app IV"
+          command: "task test"
+
+workflows:
+  version: 2
+  test-app-workflow:
+    jobs:
+      - test-app

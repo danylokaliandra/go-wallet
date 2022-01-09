@@ -4,3 +4,4 @@ automatizar:
   fichero: Taskfile.yml
   orden: task
 test: internal/mywallet/moneyAccount_test.go
+CI: .circleci/config.yml

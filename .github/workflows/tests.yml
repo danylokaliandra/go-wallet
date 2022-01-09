@@ -1,0 +1,25 @@
+name: Tests Github Actions
+
+on: push
+
+jobs:
+  tests-github:
+    strategy:
+      matrix:
+        golang: ['1.16', '1.17']
+    name: Run tests Go ${{ matrix.golang }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar Task
+        uses: arduino/setup-task@v1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup golang
+        uses: actions/setup-go@v2
+        with:
+          go-version: ${{ matrix.golang }}
+
+      - name: Run tests
+        run: task test
