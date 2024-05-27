@@ -1,6 +1,6 @@
 FROM golang:1.17-alpine
 
-LABEL maintainer="Luis Aróstegui Ruiz <luisarostegui@correo.ugr.es>"
+LABEL maintainer="Danylo Kaliandra <danylokaliandra@correo.ugr.es>"
 
 ENV TEST_DIR=/app/test/
 
